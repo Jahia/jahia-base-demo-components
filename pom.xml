@@ -54,12 +54,12 @@
   <artifactId>dx-base-demo-components</artifactId>
   <version>1.0.5-SNAPSHOT</version>
   <packaging>bundle</packaging>
-  <name>DX Base Demo Components</name>
-  <description>This is the custom module (dx-base-demo-components) for running on a Digital Experience Manager server.</description>
+  <name>Jahia Base Demo Components</name>
+  <description>This is the custom module (Jahia Base Demo Components) for running on a Digital Experience Manager server.</description>
   <scm>
-    <connection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</connection>
-    <developerConnection>scm:git:git@github.com:Jahia/dx-base-demo-components.git</developerConnection>
-    <url>scm:git:git@github.com:Jahia/dx-base-demo-components.git</url>
+    <connection>scm:git:git@github.com:Jahia/jahia-base-demo-components.git</connection>
+    <developerConnection>scm:git:git@github.com:Jahia/jahia-base-demo-components.git</developerConnection>
+    <url>scm:git:git@github.com:Jahia/jahia-base-demo-components.git</url>
     <tag>HEAD</tag>
   </scm>
   <properties>

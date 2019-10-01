@@ -1,2 +1,3 @@
-# dx-base-demo
-Base demo for the Jahia DX
+# Jahia Base Demo Components
+
+Base demo components for Jahia
