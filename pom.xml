@@ -49,10 +49,10 @@
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
-    <version>7.1.2.3</version>
+    <version>7.5.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>2.0.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>Jahia Base Demo Components</name>
   <description>This is the custom module (Jahia Base Demo Components) for running on a Digital Experience Manager server.</description>
@@ -64,6 +64,8 @@
   </scm>
   <properties>
     <jahia-depends>default,dx-base-demo-core,bootstrap3-components,bootstrap3-core,calendar,event,facets,font-awesome,grid,jquery,location,news,person,press,rating,search,topstories</jahia-depends>
+    <jahia-module-signature>MCwCFH1b2i9cQJaFK8UhCcYPnyGgIXO7AhQTsJYmAA/Cuj7hShhj1sHfcn9MgQ==</jahia-module-signature>
+    <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
   </properties>
   <repositories>
     <repository>
