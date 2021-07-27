@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
-    <modules jcr:primaryType="jnt:modules">
-        <dx-base-demo-components j:dependencies="default dx-base-demo-core bootstrap3-components bootstrap3-core calendar event facets font-awesome grid jquery location news person press rating search topstories"
+   <modules jcr:primaryType="jnt:modules">
+      <dx-base-demo-components j:dependencies="bootstrap3-components bootstrap3-core calendar default dx-base-demo-core event facets font-awesome grid jquery location news person press rating search topstories"
                                j:modulePriority="0"
                                j:moduleType="module"
                                j:title="DX Base Demo Components"
                                jcr:primaryType="jnt:module">
-                
-                <portlets jcr:primaryType="jnt:portletFolder"/>
-                <files jcr:primaryType="jnt:folder"/>
-                <contents jcr:primaryType="jnt:contentFolder"/>
-                <templates j:rootTemplatePath="/base"
-                    j:templateSetContext="/modules/dx-base-demo-templates"
+         <portlets jcr:primaryType="jnt:portletFolder"/>
+         <files jcr:primaryType="jnt:folder"/>
+         <contents jcr:primaryType="jnt:contentFolder"/>
+         <templates j:rootTemplatePath="/base"
+                    j:templateSetContext="#/modules/dx-base-demo-templates"
                     jcr:primaryType="jnt:templatesFolder">
-                    <files jcr:primaryType="jnt:folder"/>
-                    <contents jcr:primaryType="jnt:contentFolder"/>
-                    <company-content-template j:applyOn="jdnt:company"
+            <files jcr:primaryType="jnt:folder"/>
+            <contents jcr:primaryType="jnt:contentFolder"/>
+            <company-content-template j:applyOn="jdnt:company"
                                       j:defaultTemplate="true"
                                       j:hiddenTemplate="true"
                                       j:priority="30"
                                       jcr:primaryType="jnt:contentTemplate">
-                        <j:translation_en jcr:language="en"
+               <j:translation_en jcr:language="en"
                                  jcr:mixinTypes="mix:title"
                                  jcr:primaryType="jnt:translation"
                                  jcr:title="company content template"/>
-                        <pagecontent jcr:primaryType="jnt:contentList">
-                            <area columnsType="predefinedColumns"
+               <pagecontent jcr:primaryType="jnt:contentList">
+                  <area columnsType="predefinedColumns"
                         grid="9_3"
                         gridLayout="full-width"
                         jcr:mixinTypes="bootstrap3mix:createContainer bootstrap3mix:createRow bootstrap3mix:predefinedColumns"
                         jcr:primaryType="bootstrap3nt:columns">
-                                <area-main jcr:primaryType="jnt:contentList">
-                                    <main-resource-display j:mainResourceView="body" jcr:primaryType="jnt:mainResourceDisplay"/>
-                                    <companynews jcr:primaryType="jdnt:companyNews" limit="3">
-                                        <j:translation_en jcr:language="en"
+                     <area-main jcr:primaryType="jnt:contentList">
+                        <main-resource-display j:mainResourceView="body" jcr:primaryType="jnt:mainResourceDisplay"/>
+                        <companynews jcr:primaryType="jdnt:companyNews" limit="3">
+                           <j:translation_en jcr:language="en"
                                              jcr:mixinTypes="mix:title"
                                              jcr:primaryType="jnt:translation"/>
-                                    </companynews>
-                                </area-main>
-                                <area-side jcr:primaryType="jnt:contentList">
-                                    <main-resource-display j:mainResourceView="metadata" jcr:primaryType="jnt:mainResourceDisplay"/>
-                                    <map-static j:classname="demodxmap margin-bottom-30 overflow-hidden"
+                        </companynews>
+                     </area-main>
+                     <area-side jcr:primaryType="jnt:contentList">
+                        <main-resource-display j:mainResourceView="metadata" jcr:primaryType="jnt:mainResourceDisplay"/>
+                        <map-static j:classname="demodxmap margin-bottom-30 overflow-hidden"
                                     j:height="255"
                                     j:imageType="png8"
                                     j:mapType="roadmap"
@@ -51,17 +50,16 @@
                                     j:zoom="auto"
                                     jcr:mixinTypes="jmix:customSkin jmix:skinnable"
                                     jcr:primaryType="jnt:staticMap"/>
-                                    <main-resource-display-1 j:mainResourceView="addPeople"
+                        <main-resource-display-1 j:mainResourceView="addPeople"
                                                  jcr:primaryType="jnt:mainResourceDisplay"/>
-                                </area-side>
-                            </area>
-                        </pagecontent>
-                        <landing jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="banner" jcr:primaryType="jnt:mainResourceDisplay"/>
-                        </landing>
-                    </company-content-template>
-                </templates>
-                
-            </dx-base-demo-components>
-    </modules>
+                     </area-side>
+                  </area>
+               </pagecontent>
+               <landing jcr:primaryType="jnt:contentList">
+                  <main-resource-display j:mainResourceView="banner" jcr:primaryType="jnt:mainResourceDisplay"/>
+               </landing>
+            </company-content-template>
+         </templates>
+      </dx-base-demo-components>
+   </modules>
 </content>
