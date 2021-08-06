@@ -43,12 +43,11 @@
  */
 package org.jahia.modules.jahiademo.filter;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.net.URIBuilder;
 import org.jahia.services.content.JCRCallback;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.JCRSessionWrapper;
@@ -67,6 +66,7 @@ import java.net.URI;
 import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class StockWidgetFilter extends AbstractFilter {
 
@@ -128,7 +128,7 @@ public class StockWidgetFilter extends AbstractFilter {
     private JSONObject queryGoogleFinanceAPI(final String path,
                                              final String... params) throws RepositoryException {
         try {
-            final HttpClient httpClient = httpClientService.getHttpClient(API_URL);
+            final CloseableHttpClient httpClient = httpClientService.getHttpClient(API_URL);
             URIBuilder builder = new URIBuilder(new URL("http", API_URL, -1, path).toExternalForm());
 
 
@@ -141,13 +141,10 @@ public class StockWidgetFilter extends AbstractFilter {
             URI uri = builder.build();
             LOGGER.debug("Start request : " + uri);
             final HttpGet httpMethod = new HttpGet(uri);
-            try {
-                httpMethod.setConfig(httpClientService.getRequestConfigBuilder(httpClient).setSocketTimeout(1000).build());
-
-                HttpResponse response = httpClient.execute(httpMethod);
+            httpMethod.setConfig(httpClientService.getRequestConfigBuilder(httpClient).setResponseTimeout(1000L, TimeUnit.MILLISECONDS).build());
+            try (CloseableHttpResponse response = httpClient.execute(httpMethod)) {
                 return new JSONObject(EntityUtils.toString(response.getEntity()));
             } finally {
-                httpMethod.releaseConnection();
                 LOGGER.debug("Request " + uri + " done in " + (System.currentTimeMillis() - l) + "ms");
             }
         } catch (java.net.SocketTimeoutException te) {
