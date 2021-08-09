@@ -221,7 +221,7 @@
 [jdnt:companies] > jnt:content, mix:title, jdmix:jahiademo, jmix:manuallyOrderable, jmix:list orderable
   + * (jdnt:company)
 
-[jdnt:company] > jnt:content, jdmix:jahiademo, mix:title orderable
+[jdnt:company] > jnt:content, jdmix:jahiademo, jmix:mainResource, mix:title orderable
  - industryCat (weakreference, choicelist[nodes='/sites/systemsite/categories/companies/;jnt:category'])
  - headline (string, richtext) i18n
  - overview (string, richtext) i18n
