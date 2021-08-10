@@ -43,9 +43,11 @@
  */
 package org.jahia.modules.jahiademo.filter;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpURL;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.net.URIBuilder;
 import org.jahia.services.content.JCRCallback;
 import org.jahia.services.content.JCRNodeWrapper;
 import org.jahia.services.content.JCRSessionWrapper;
@@ -60,8 +62,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
+import java.net.URI;
+import java.net.URL;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class StockWidgetFilter extends AbstractFilter {
 
@@ -123,25 +128,24 @@ public class StockWidgetFilter extends AbstractFilter {
     private JSONObject queryGoogleFinanceAPI(final String path,
                                              final String... params) throws RepositoryException {
         try {
-            final HttpClient httpClient = httpClientService.getHttpClient(API_URL);
-            final HttpURL url = new HttpURL(API_URL, -1, path);
+            final CloseableHttpClient httpClient = httpClientService.getHttpClient(API_URL);
+            URIBuilder builder = new URIBuilder(new URL("http", API_URL, -1, path).toExternalForm());
+
 
             final Map<String, String> m = new LinkedHashMap<String, String>();
             for (int i = 0; i < params.length; i += 2) {
-                m.put(params[i], params[i + 1]);
+                builder.setParameter(params[i], params[i + 1]);
             }
 
-            url.setQuery(m.keySet().toArray(new String[m.size()]), m.values().toArray(new String[m.size()]));
             final long l = System.currentTimeMillis();
-            LOGGER.debug("Start request : " + url);
-            final GetMethod httpMethod = new GetMethod(url.toString());
-            try {
-                httpMethod.getParams().setSoTimeout(1000);
-                httpClient.executeMethod(httpMethod);
-                return new JSONObject(httpMethod.getResponseBodyAsString());
+            URI uri = builder.build();
+            LOGGER.debug("Start request : " + uri);
+            final HttpGet httpMethod = new HttpGet(uri);
+            httpMethod.setConfig(httpClientService.getRequestConfigBuilder(httpClient).setResponseTimeout(1000L, TimeUnit.MILLISECONDS).build());
+            try (CloseableHttpResponse response = httpClient.execute(httpMethod)) {
+                return new JSONObject(EntityUtils.toString(response.getEntity()));
             } finally {
-                httpMethod.releaseConnection();
-                LOGGER.debug("Request " + url + " done in " + (System.currentTimeMillis() - l) + "ms");
+                LOGGER.debug("Request " + uri + " done in " + (System.currentTimeMillis() - l) + "ms");
             }
         } catch (java.net.SocketTimeoutException te) {
             LOGGER.warn("Timeout Exception on request to Google Finance API");
