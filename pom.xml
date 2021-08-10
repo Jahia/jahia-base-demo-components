@@ -64,7 +64,7 @@
   </scm>
   <properties>
     <jahia-depends>default,dx-base-demo-core,bootstrap3-components,bootstrap3-core,calendar,event,facets,font-awesome,grid,jquery,location,news,person,press,rating,search,topstories</jahia-depends>
-    <jahia-module-signature>MCwCFCOaiMiFrBUPCdxTtjY26xLD9m84AhQ4HaEfHfdsk8OXNcBeJbamUS6Q5A==</jahia-module-signature>
+    <jahia-module-signature>MCwCFD5q+6GJ/lxOQW3XS8lt9HLYbmgXAhQSHAZurL9Ec6n/PCbRLktpEyDSDA==</jahia-module-signature>
     <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
   </properties>
   <repositories>
