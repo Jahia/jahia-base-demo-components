@@ -168,8 +168,8 @@
 [jdmix:videoSlider] mixin
  extends = jdnt:sliderPanel
  itemtype = content
- - webm (weakreference, picker[type='file']) i18n
- - mp4 (weakreference, picker[type='file']) i18n
+ - webm (weakreference, picker[type='video']) i18n
+ - mp4 (weakreference, picker[type='video']) i18n
 
 [jdnt:compCarousel] > jnt:content, jdmix:jahiademo, jmix:list, mix:title
  - startPage (weakreference, picker[type='page'])
@@ -202,7 +202,7 @@
  - image (weakreference, picker[type='image']) < 'jmix:image'
 
 [jdnt:mediaGalleryInternalVideo] > jnt:content, mix:title
- - video (weakreference, picker[type='file']) i18n
+ - video (weakreference, picker[type='video']) i18n
  - videoPoster (weakreference, picker[type='image']) < 'jmix:image'
 
 [jdnt:mediaGalleryExternalVideo] > jnt:content, mix:title
