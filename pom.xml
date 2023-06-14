@@ -64,7 +64,7 @@
   </scm>
   <properties>
     <jahia-depends>bootstrap3-components, font-awesome, dx-base-demo-core, skins, event, news, person, location, topstories</jahia-depends>
-    <jahia-module-signature>MCwCFEFSONflZRAZ+SA0yX1OwMSBhVYGAhRh9KSrXvcwNDFMywJLemeb1qwYuQ==</jahia-module-signature>
+    <jahia-module-signature>MC0CFG23rt3v7bkbzEzwtXsnSwtaysG4AhUAklOt7H0AYnhqAafRJgtE329+nIw=</jahia-module-signature>
     <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
   </properties>
   <repositories>
