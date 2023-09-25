@@ -49,7 +49,7 @@
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
-    <version>8.2.0.0-SNAPSHOT</version>
+    <version>8.1.3.0</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
   <version>2.5.0-SNAPSHOT</version>
@@ -66,6 +66,7 @@
     <jahia-depends>bootstrap3-components, font-awesome, dx-base-demo-core, skins, event, news, person, location, topstories</jahia-depends>
     <jahia-module-signature>MC0CFG23rt3v7bkbzEzwtXsnSwtaysG4AhUAklOt7H0AYnhqAafRJgtE329+nIw=</jahia-module-signature>
     <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
+    <jahia.plugin.version>6.9</jahia.plugin.version>
   </properties>
   <repositories>
     <repository>
@@ -87,6 +88,55 @@
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Import-Package>
+              *,
+              org.apache.commons.id,
+              org.apache.commons.lang;version="[2.6,3)",
+              org.apache.commons.lang.math;version="[2.6,3)",
+              org.apache.naming.java,
+              org.apache.taglibs.standard.tag.rt.core,
+              org.apache.taglibs.unstandard;version="[8.1,9)",
+              org.jahia.data.viewhelper.principal,
+              org.jahia.defaults.config.spring,
+              org.jahia.exceptions,
+              org.jahia.services,
+              org.jahia.services.content.decorator,
+              org.jahia.services.content.nodetypes,
+              org.jahia.services.render.scripting,
+              org.jahia.services.search,
+              org.jahia.services.seo,
+              org.jahia.services.sites,
+              org.jahia.taglibs;version="[8.1,9)",
+              org.jahia.taglibs.functions;version="[8.1,9)",
+              org.jahia.taglibs.internal.date;version="[8.1,9)",
+              org.jahia.taglibs.jcr;version="[8.1,9)",
+              org.jahia.taglibs.jcr.node;version="[8.1,9)",
+              org.jahia.taglibs.jcr.query;version="[8.1,9)",
+              org.jahia.taglibs.query;version="[8.1,9)",
+              org.jahia.taglibs.search;version="[8.1,9)",
+              org.jahia.taglibs.search.facets;version="[8.1,9)",
+              org.jahia.taglibs.template;version="[8.1,9)",
+              org.jahia.taglibs.template.gwt;version="[8.1,9)",
+              org.jahia.taglibs.template.include;version="[8.1,9)",
+              org.jahia.taglibs.template.layoutmanager;version="[8.1,9)",
+              org.jahia.taglibs.template.pager;version="[8.1,9)",
+              org.jahia.taglibs.uicomponents;version="[8.1,9)",
+              org.jahia.taglibs.uicomponents.i18n;version="[8.1,9)",
+              org.jahia.taglibs.uicomponents.image;version="[8.1,9)",
+              org.jahia.taglibs.uicomponents.loginform;version="[8.1,9)",
+              !org.jahia.taglibs.uicomponents.portlets,
+              org.jahia.taglibs.user;version="[8.1,9)",
+              org.jahia.taglibs.utility;version="[8.1,9)",
+              org.jahia.taglibs.utility.constants;version="[8.1,9)",
+              org.jahia.taglibs.utility.i18n;version="[8.1,9)",
+              org.jahia.taglibs.utility.session;version="[8.1,9)",
+              org.jahia.taglibs.utility.siteproperties;version="[8.1,9)",
+              org.jahia.utils
+            </Import-Package>
+          </instructions>
+        </configuration>
       </plugin>
     </plugins>
   </build>
