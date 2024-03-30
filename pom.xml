@@ -49,7 +49,7 @@
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
-    <version>8.1.3.0</version>
+    <version>8.2.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>dx-base-demo-components</artifactId>
   <version>2.5.0-SNAPSHOT</version>
@@ -63,7 +63,7 @@
     <tag>HEAD</tag>
   </scm>
   <properties>
-    <jahia-depends>bootstrap3-components, font-awesome, dx-base-demo-core, skins, event, news, person, location, topstories</jahia-depends>
+    <jahia-depends>bootstrap3-components, font-awesome, dx-base-demo-core, skins, event, news, person, location, topstories, legacy-default-components</jahia-depends>
     <jahia-module-signature>MC0CFG23rt3v7bkbzEzwtXsnSwtaysG4AhUAklOt7H0AYnhqAafRJgtE329+nIw=</jahia-module-signature>
     <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
     <jahia.plugin.version>6.9</jahia.plugin.version>
