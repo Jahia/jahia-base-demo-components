@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
    <modules jcr:primaryType="jnt:modules">
-      <dx-base-demo-components j:dependencies="bootstrap3-components bootstrap3-core calendar default dx-base-demo-core event facets font-awesome grid jquery location news person press rating search topstories"
+      <dx-base-demo-components j:dependencies="bootstrap3-components bootstrap3-core calendar default dx-base-demo-core event facets font-awesome grid jquery location news person press rating search topstories legacy-default-components"
                                j:modulePriority="0"
                                j:moduleType="module"
                                j:title="DX Base Demo Components"
