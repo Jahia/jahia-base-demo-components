@@ -38,6 +38,11 @@
             </properties>
         </profile>
     </profiles>
+
+    <activeProfiles>
+        <activeProfile>jahia-internal-repository</activeProfile>
+    </activeProfiles>
+
     <servers>
         <server>
             <id>jahia-public</id>
