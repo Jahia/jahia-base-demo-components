@@ -21,6 +21,11 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     steps:
+      - name: Add safe directory
+        shell: bash
+        run: |
+          git config --global --add safe.directory /__w/jahia-base-demo-components/jahia-base-demo-components
+    
       # Providing the SSH PRIVATE of a user part of an admin group
       # is necessary to bypass PR checks
       - uses: actions/checkout@v3
