@@ -2,6 +2,32 @@
 <settings>
     <profiles>
         <profile>
+            <id>jahia-internal-repository</id>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>central</id>
+                    <name>Central Repository</name>
+                    <url>https://repo1.maven.org/maven2/</url>
+                </repository>
+                <repository>
+                    <id>jahia-internal</id>
+                    <name>Jahia Internal Repository</name>
+                    <url>https://devtools.jahia.com/nexus/content/groups/internal/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
             <id>sonar</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
