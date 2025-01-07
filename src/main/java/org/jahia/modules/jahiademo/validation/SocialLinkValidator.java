@@ -33,7 +33,6 @@ public class SocialLinkValidator implements JCRNodeValidator {
         this.node = node;
     }
 
-
     @NoJavaScriptLink
     public String getFacebook() {
         return node.getPropertyAsString("facebook");
@@ -54,8 +53,4 @@ public class SocialLinkValidator implements JCRNodeValidator {
         return node.getPropertyAsString("twitter");
     }
 
-    @NoJavaScriptLink
-    public int getTest() {
-        return 123;
-    }
 }
