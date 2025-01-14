@@ -12,7 +12,7 @@
  - textColor (string, choicelist[resourceBundle]) = 'light' autocreated < 'light', 'dark'
  - subtitle (string) internationalized
  - body (string) internationalized
- - internalLink (weakreference, picker[type='editoriallink']) < 'jmix:droppableContent', 'jnt:page', 'jnt:contentFolder', 'jnt:folder'
+ - internalLink (weakreference, picker[type='pagesandfiles']) < 'jmix:droppableContent', 'jnt:page', 'jnt:contentFolder', 'jnt:folder'
  - linkText (string) internationalized
  - backgroundImg (weakreference, picker[type='image']) < 'jmix:image'
  - smallPhoto (weakreference, picker[type='image']) < 'jmix:image'
