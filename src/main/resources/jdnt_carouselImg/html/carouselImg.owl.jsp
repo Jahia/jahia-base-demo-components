@@ -17,7 +17,8 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%-- get the url of the image to display --%>
-<template:module path="${currentNode.properties.image.node.path}" view="hidden.contentURL" editable="false" var="imgURL"/>
+<template:addCacheDependency node="${currentNode.properties.image.node}"/>
+<c:url var="imgURL" value="${currentNode.properties.image.node.url}" context="/" />
 
 <div class="owl-item owl-fix-width">
     <div class="item">

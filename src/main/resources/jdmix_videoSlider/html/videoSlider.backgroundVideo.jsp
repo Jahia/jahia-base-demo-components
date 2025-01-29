@@ -24,12 +24,14 @@
 <video data-autopause="false" data-mute="true" data-loop="true" data-fill-mode="fill">
     <c:choose>
         <c:when test="${not empty mp4.node}">
-            <template:module path="${mp4.node.path}" view="hidden.contentURL" editable="false" var="mp4Url"/>
+            <template:addCacheDependency node="${mp4.node}"/>
+            <c:url var="mp4Url" value="${mp4.node.url}" context="/"/>
             <source src="${mp4Url}" type="video/mp4"/>
         </c:when>
         <c:when test="${not empty webm.node}">
-            <template:module path="${webm.node.path}" view="hidden.contentURL" editable="false" var="webmURL"/>
-            <source src="${webmURL}" type="video/webm"/>
+            <template:addCacheDependency node="${webm.node}"/>
+            <c:url var="webmUrl" value="${webm.node.url}" context="/"/>
+            <source src="${webmUrl}" type="video/webm"/>
         </c:when>
         <c:otherwise></c:otherwise>
     </c:choose>

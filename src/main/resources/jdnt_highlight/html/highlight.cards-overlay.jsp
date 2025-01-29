@@ -43,7 +43,8 @@
 <c:if test="${jcr:isNodeType(currentNode, 'jdmix:hasLink') and not empty currentNode.properties['internalLink']
 and not empty currentNode.properties['internalLink'].node}">
     <c:set var="linkNode" value="${currentNode.properties['internalLink'].node}" />
-    <template:module node="${linkNode}" view="hidden.contentURL" editable="false" var="linkUrl"/>
+    <template:addCacheDependency node="${linkNode}"/>
+    <c:url var="linkUrl" value="${linkNode.url}" context="/"/>
 </c:if>
 
 

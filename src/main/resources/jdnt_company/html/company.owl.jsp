@@ -20,7 +20,8 @@
 
 <%-- get the imageURL to display --%>
 <c:if test="${not empty currentNode.properties['thumbnail'].node}">
-    <template:module path="${currentNode.properties.thumbnail.node.path}" view="hidden.contentURL" editable="false" var="imageUrl"/>
+    <template:addCacheDependency node="${currentNode.properties.thumbnail.node}"/>
+    <c:url var="imageUrl" value="${currentNode.properties.thumbnail.node.url}" context="/"/>
 </c:if>
 
 <c:url var="compUrl" value="${currentNode.url}" context="/"/>

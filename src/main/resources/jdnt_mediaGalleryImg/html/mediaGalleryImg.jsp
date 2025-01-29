@@ -13,7 +13,8 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <c:set var="image" value="${currentNode.properties['image'].node}"/>
-<template:module path='${image.path}' editable='false' view='hidden.contentURL' var="imageUrl"/>
+<template:addCacheDependency node="${image}"/>
+<c:url var="imageUrl" value="${image.url}" context="/"/>
 <template:module path='${image.path}' editable='false' view='hidden.imageSize' var="imageSize"/>
 
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>

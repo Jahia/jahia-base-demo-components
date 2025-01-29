@@ -41,7 +41,8 @@
         <c:url var="backgroundUrl" value="${url.currentModule}/img/background.jpg"/>
     </c:when>
     <c:otherwise>
-        <template:module path='${background.path}' editable='false' view='hidden.contentURL' var="backgroundUrl"/>
+        <template:addCacheDependency node="${background}"/>
+        <c:url var="backgroundUrl" value="${background.url}" context="/" />
     </c:otherwise>
 </c:choose>
 
@@ -63,7 +64,8 @@
 
     <%-- if a small photo was provided display it --%>
     <c:if test="${not empty image}">
-        <template:module path='${image.path}' editable='false' view='hidden.contentURL' var="imageUrl"/>
+        <template:addCacheDependency node="${image}"/>
+        <c:url var="imageUrl" value="${image.url}" context="/"/>
         <div class="ms-layer sidePanelPhoto"
              style="left: ${photoLayout};">
             <img src="${imageUrl}" alt=""/>
@@ -103,7 +105,8 @@
 
     <%-- if a link has been provided display it as a button --%>
     <c:if test="${not empty link}">
-        <a class="ms-layer btn-u top390" style="left:${textLayout}" href="<template:module node="${link}" view="hidden.contentURL"/>"
+        <template:addCacheDependency node="${link}"/>
+        <a class="ms-layer btn-u top390" style="left:${textLayout}" href="<c:url value="${link.url}" context="/"/>"
            data-effect="bottom(40)"
            data-duration="2000"
            data-delay="1300"

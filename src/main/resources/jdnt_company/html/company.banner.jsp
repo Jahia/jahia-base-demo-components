@@ -33,8 +33,9 @@
     <div class="container">
         <c:choose>
             <c:when test="${not empty logo}">
-                <template:module path="${logo.node.path}" view="hidden.contentURL" editable="false" var="logoURL"/>
-                <img src="${logoURL}" class="company-banner-logo"/>
+                <template:addCacheDependency node="${logo.node}"/>
+                <c:url value="${url.files}${logo.node.path}" var="logoUrl"/>
+                <img src="${logoUrl}" class="company-banner-logo"/>
             </c:when>
             <c:otherwise>
                 <h1>${title.string}</h1>
