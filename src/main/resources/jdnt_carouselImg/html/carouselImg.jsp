@@ -18,7 +18,8 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%-- get the caption --%>
 <c:set var="caption" value="${currentNode.properties['caption'].string}"/>
-<template:module path="${currentNode.properties.image.node.path}" view="hidden.contentURL" editable="false" var="imgURL"/>
+<template:addCacheDependency node="${currentNode.properties['image'].node}"/>
+<c:url var="imgURL" value="${currentNode.properties['image'].node.url}"  context="/"/>
 <img class="carouselImageFull" src="${imgURL}" alt="${caption}">
 <c:if test="${not empty caption}">
     <div class="carousel-caption">

@@ -24,5 +24,6 @@
 <c:if test="${empty linkTitle}">
     <c:set var="linkTitle" value="${linkNode.displayableName}"/>
 </c:if>
-<a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false" />" style="text-decoration: none;"
+<template:addCacheDependency node="${linkNode}"/>
+<a href="<c:url value="${linkNode.url}" context="/"/>" style="text-decoration: none;"
    class="btn-u btn-brd btn-brd-hover btn-u-light">${linkTitle}</a>

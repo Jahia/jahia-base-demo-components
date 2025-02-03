@@ -40,7 +40,8 @@ and not empty currentNode.properties['internalLink'].node}">
 
 <div class="thumbnail-img ">
     <c:if test="${not empty linkNode}">
-        <a href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
+        <template:addCacheDependency node="${linkNode}"/>
+        <a href="<c:url value="${linkNode.url}" context="/"/>" alt="${title}">
     </c:if>
             <img class="img-responsive" src="${imageUrl}" alt="">
         <%-- only display the read more text if a link has been provided --%>

@@ -24,7 +24,8 @@
 <jcr:nodeProperty node="${currentNode}" name="industryCat" var="category"/>
 <jcr:nodeProperty node="${currentNode}" name="thumbnail" var="thumb"/>
 <c:if test="${not empty thumb}">
-    <template:module path="${thumb.node.path}" view="hidden.contentURL" editable="false" var="thumbURL"/>
+    <template:addCacheDependency node="${thumb.node}"/>
+    <c:url var="thumbURL" value="${thumb.node.url}" context="/"/>
 </c:if>
 <%--Set variable for company descriptions and remove HTML tags--%>
 <c:set var="description" value="${functions:removeHtmlTags(currentNode.properties.headline.string)}"/>

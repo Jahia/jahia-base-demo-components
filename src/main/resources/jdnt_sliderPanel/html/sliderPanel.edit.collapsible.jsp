@@ -75,7 +75,8 @@
         </c:if>
 
         <c:if test="${not empty link}">
-            <a class="but-layer-editslider" href="<template:module node="${link}" view="hidden.contentURL" editable="false"/>" alt="${title}">${linkText}</a>
+            <template:addCacheDependency node="${link}"/>
+            <a class="but-layer-editslider" href="<c:url value="${link.url}" context="/"/>" alt="${title}">${linkText}</a>
         </c:if>
     </div>
     <%-- second image if exists --%>

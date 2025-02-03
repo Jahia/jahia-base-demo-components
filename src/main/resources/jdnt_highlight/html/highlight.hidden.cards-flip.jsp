@@ -53,7 +53,8 @@ and not empty currentNode.properties['internalLink'].node}">
             <div class="caption">
                 <c:choose>
                     <c:when test="${not empty linkNode}">
-                        <h3><a class="hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
+                        <template:addCacheDependency node="${linkNode}"/>
+                        <h3><a class="hover-effect" href="<c:url value="${linkNode.url}" context="/"/>">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
                     </c:when>
                     <c:otherwise>
                         <h3>${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</h3>
@@ -62,7 +63,8 @@ and not empty currentNode.properties['internalLink'].node}">
                 <p>${fn:replace(description, fn:substring(description, 100, fn:length(description)), ' ...')}</p>
                 <%-- only display the read more text if a link has been provided --%>
                 <c:if test="${not empty linkNode}">
-                    <a class="btn-more-2 hover-effect" href="<template:module node="${linkNode}" view="hidden.contentURL" editable="false"/>" alt="${title}">
+                    <template:addCacheDependency node="${linkNode}"/>
+                    <a class="btn-more-2 hover-effect" href="<c:url value="${linkNode.url}" context="/"/>" alt="${title}">
                         <c:choose>
                             <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                                 <template:include view="hidden.buttonText"/>
