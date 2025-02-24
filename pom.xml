@@ -66,6 +66,7 @@
     <jahia-depends>bootstrap3-components, font-awesome, dx-base-demo-core, skins, event, news, person, location, topstories, legacy-default-components</jahia-depends>
     <jahia-module-signature>MC0CFExF6ZV6kMhgfoxbEKQdjh/dYF1eAhUAjQzhOpoQzheJuXxqhDuIHZFFd1o=</jahia-module-signature>
     <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
+    <jahia.plugin.version>6.9</jahia.plugin.version>
   </properties>
   <repositories>
     <repository>
