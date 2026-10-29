@@ -60,17 +60,17 @@ and not empty currentNode.properties['internalLink'].node}">
                             <ul class="link-captions no-bottom-space">
                         <c:choose>
                             <c:when test="${not empty linkNode}">
-                                <h3><a class="hover-effect" href="${linkUrl}">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
+                                <h3><a class="hover-effect" href="${linkUrl}">${fn:escapeXml(fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...'))}</a></h3>
                             </c:when>
                             <c:otherwise>
-                                <h4>${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</h4>
+                                <h4>${fn:escapeXml(fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...'))}</h4>
                             </c:otherwise>
                         </c:choose>
-                        <p>${fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...')}</p>
+                        <p>${fn:escapeXml(fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...'))}</p>
                         <c:if test="${not empty linkNode}">
                         <li><a href="${linkUrl}"><i class="rounded-x fa fa-link"></i></a></li>
                         </c:if>
-                        <li><a href="${imageUrl}" class="msn-lightbox" data-title="${title}"><i
+                        <li><a href="${imageUrl}" class="msn-lightbox" data-title="${fn:escapeXml(title)}"><i
                                 class="rounded-x fa fa-search"></i></a></li>
                     </ul>
                 </div>
@@ -87,16 +87,16 @@ and not empty currentNode.properties['internalLink'].node}">
             <div class="caption-items">
                     <c:choose>
                         <c:when test="${not empty linkNode}">
-                            <h3><a class="hover-effect" href="${linkUrl}">${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</a></h3>
+                            <h3><a class="hover-effect" href="${linkUrl}">${fn:escapeXml(fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...'))}</a></h3>
                         </c:when>
                         <c:otherwise>
-                            <h3>${fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...')}</h3>
+                            <h3>${fn:escapeXml(fn:replace(title, fn:substring(title, 30, fn:length(title)), ' ...'))}</h3>
                         </c:otherwise>
                     </c:choose>
-                    <p>${fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...')}</p>
+                    <p>${fn:escapeXml(fn:replace(description, fn:substring(description, 30, fn:length(description)), ' ...'))}</p>
                     <%-- only display the read more text if a link has been provided --%>
                     <c:if test="${not empty linkNode}">
-                        <a class="btn-more-2 hover-effect" href="${linkUrl}" alt="${title}">
+                        <a class="btn-more-2 hover-effect" href="${linkUrl}" alt="${fn:escapeXml(title)}">
                             <c:choose>
                                 <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                                     <template:include view="hidden.buttonText"/>

@@ -61,16 +61,16 @@
     <div class="edit-slider-cont${textLayout}">
 
         <c:if test="${not empty subtitle}">
-            <div class="first-layer-editslider ${textColorClass}">${subtitle}</div>
+            <div class="first-layer-editslider ${textColorClass}">${fn:escapeXml(subtitle)}</div>
         </c:if>
         <c:if test="${not empty title}">
             <div class="second-layer-editslider">
-                <span class="color-theme">${title}</span>
+                <span class="color-theme">${fn:escapeXml(title)}</span>
             </div>
         </c:if>
 
         <c:if test="${not empty summary}">
-            <div class="text-layer-editslider ${textColorClass}">${summary}</div>
+            <div class="text-layer-editslider ${textColorClass}">${fn:escapeXml(summary)}</div>
         </c:if>
 
         <c:if test="${not empty link}">

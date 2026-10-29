@@ -79,7 +79,7 @@
              data-duration="2000"
              data-delay="700"
              data-ease="easeOutExpo"
-        >${subtitle}</div>
+        >${fn:escapeXml(subtitle)}</div>
     </c:if>
 
     <%-- if a title is provided display it --%>
@@ -89,7 +89,7 @@
              data-duration="2000"
              data-delay="1000"
              data-ease="easeOutExpo"
-        ><span class="color-theme">${title}</span></div>
+        ><span class="color-theme">${fn:escapeXml(title)}</span></div>
     </c:if>
 
     <%-- if a summary is provided display it --%>
@@ -99,7 +99,7 @@
              data-duration="2000"
              data-delay="1300"
              data-ease="easeOutExpo"
-        >${summary}</div>
+        >${fn:escapeXml(summary)}</div>
     </c:if>
 
 

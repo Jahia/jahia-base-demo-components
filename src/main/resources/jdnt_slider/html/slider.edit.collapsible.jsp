@@ -42,7 +42,7 @@
                 <h4 class="panel-title">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-1"
                        href="#collapse-${subchild.identifier}">
-                        Slider # ${item.count} - ${subchild.properties['jcr:title'].string}
+                        Slider # ${item.count} - ${fn:escapeXml(subchild.properties['jcr:title'].string)}
                     </a>
                 </h4>
             </div>

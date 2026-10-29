@@ -40,13 +40,13 @@
 <%-- Get the title, if exists display --%>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:if test="${not empty title}">
-    <div class="headline"><h2>${title}</h2></div>
+    <div class="headline"><h2>${fn:escapeXml(title)}</h2></div>
 </c:if>
 
 <div id="stock-widget${uuid}" class="modal-stock-widget stock-widget" onclick="showModal('${uuid}')">
     <div class="front">
         <div class="stock-widget-wrapper">
-            <div class="title color-theme">${stock}</div>
+            <div class="title color-theme">${fn:escapeXml(stock)}</div>
             <div class="description">
                 <p>${requestScope.stockDescription}</p>
             </div>
@@ -86,11 +86,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">${stock} - ${exchange}</h4>
+                <h4 class="modal-title">${fn:escapeXml(stock)} - ${fn:escapeXml(exchange)}</h4>
             </div>
             <div class="modal-body">
-                <img src="https://finance.google.com/finance/getchart?q=${stock}&i=${interval}&p=${period}
-                <c:if test="${not empty exchange}">&x=${exchange}</c:if> ">
+                <c:url var="chartUrl" value="https://finance.google.com/finance/getchart">
+                    <c:param name="q" value="${stock}"/>
+                    <c:param name="i" value="${interval}"/>
+                    <c:param name="p" value="${period}"/>
+                    <c:if test="${not empty exchange}"><c:param name="x" value="${exchange}"/></c:if>
+                </c:url>
+                <img src="${fn:escapeXml(chartUrl)}">
             </div>
         </div>
     </div>
