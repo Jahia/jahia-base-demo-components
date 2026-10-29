@@ -20,9 +20,9 @@
 <c:set var="caption" value="${currentNode.properties['caption'].string}"/>
 <template:addCacheDependency node="${currentNode.properties['image'].node}"/>
 <c:url var="imgURL" value="${currentNode.properties['image'].node.url}"  context="/"/>
-<img class="carouselImageFull" src="${imgURL}" alt="${caption}">
+<img class="carouselImageFull" src="${imgURL}" alt="${fn:escapeXml(caption)}">
 <c:if test="${not empty caption}">
     <div class="carousel-caption">
-        <p>${caption}</p>
+        <p>${fn:escapeXml(caption)}</p>
     </div>
 </c:if>

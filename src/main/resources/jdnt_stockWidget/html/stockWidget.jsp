@@ -65,7 +65,7 @@
 <%-- Get the title, if exists display --%>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:if test="${not empty title}">
-    <div class="headline"><h2>${title}</h2></div>
+    <div class="headline"><h2>${fn:escapeXml(title)}</h2></div>
 </c:if>
 
 <div id="stock-widget${uuid}" class="card flippable-stock-widget stock-widget" onclick="flip(this, ${renderContext.editMode}, '${uuid}')">
@@ -80,7 +80,7 @@
     </div>
     <div class="front">
         <div class="stock-widget-wrapper">
-            <div class="title color-theme">${stock}</div>
+            <div class="title color-theme">${fn:escapeXml(stock)}</div>
             <div class="description">
                 <p>${requestScope.stockDescription}</p>
             </div>
@@ -112,6 +112,12 @@
     </div>
     <div class="back">
         <i class="fa fa-arrow-left fa-lg" title="<fmt:message key="jdnt_stockWidget.flipToPrice"/>"></i>
-        <img src="https://finance.google.com/finance/getchart?q=${stock}&i=${interval}&p=${period}<c:if test="${not empty exchange}">&x=${exchange}</c:if> ">
+        <c:url var="chartUrl" value="https://finance.google.com/finance/getchart">
+            <c:param name="q" value="${stock}"/>
+            <c:param name="i" value="${interval}"/>
+            <c:param name="p" value="${period}"/>
+            <c:if test="${not empty exchange}"><c:param name="x" value="${exchange}"/></c:if>
+        </c:url>
+        <img src="${fn:escapeXml(chartUrl)}">
     </div>
 </div>

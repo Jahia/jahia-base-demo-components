@@ -23,7 +23,7 @@
 <%-- Get the title of the carousel, if exists display above carousel --%>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:if test="${not empty title}">
-    <div class="headline"><h2>${title}</h2></div>
+    <div class="headline"><h2>${fn:escapeXml(title)}</h2></div>
 </c:if>
 
 

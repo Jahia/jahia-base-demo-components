@@ -50,7 +50,7 @@ and not empty currentNode.properties['internalLink'].node}">
         <%-- only display the read more text if a link has been provided --%>
         <c:if test="${not empty linkNode}">
             <template:addCacheDependency node="${linkNode}"/>
-            <a class="btn-more hover-effect" href="<c:url value="${linkNode.url}" context="/"/>" alt="${title}">
+            <a class="btn-more hover-effect" href="<c:url value="${linkNode.url}" context="/"/>" alt="${fn:escapeXml(title)}">
                 <c:choose>
                     <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                         <template:include view="hidden.buttonText"/>
@@ -67,12 +67,12 @@ and not empty currentNode.properties['internalLink'].node}">
         <c:choose>
             <c:when test="${not empty linkNode}">
                 <template:addCacheDependency node="${linkNode}"/>
-                <h3><a class="hover-effect" href="<c:url value="${linkNode.url}" context="/"/>">${title}</a></h3>
+                <h3><a class="hover-effect" href="<c:url value="${linkNode.url}" context="/"/>">${fn:escapeXml(title)}</a></h3>
             </c:when>
             <c:otherwise>
-                <h3>${title}</h3>
+                <h3>${fn:escapeXml(title)}</h3>
             </c:otherwise>
         </c:choose>
-        <p>${description}</p>
+        <p>${fn:escapeXml(description)}</p>
     </div>
 </div>

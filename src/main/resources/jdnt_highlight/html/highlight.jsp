@@ -31,18 +31,18 @@ and not empty currentNode.properties['internalLink'].node}">
         <%-- if there is a link display, make the icon clickable --%>
         <c:when test="${not empty linkNode}">
             <template:addCacheDependency node="${linkNode}"/>
-            <a href="<c:url value="${linkNode.url}" context="/"/>"><i class="fa ${icon} service-icon"></i></a>
+            <a href="<c:url value="${linkNode.url}" context="/"/>"><i class="fa ${fn:escapeXml(icon)} service-icon"></i></a>
         </c:when>
-        <c:otherwise><i class="fa ${icon} service-icon"></i></c:otherwise>
+        <c:otherwise><i class="fa ${fn:escapeXml(icon)} service-icon"></i></c:otherwise>
     </c:choose>
     <div class="desc">
-        <h4>${title}</h4>
+        <h4>${fn:escapeXml(title)}</h4>
 
-        <p>${description}</p>
+        <p>${fn:escapeXml(description)}</p>
         <%-- display a read more text link if a link has been provided --%>
         <c:if test="${not empty linkNode}">
             <template:addCacheDependency node="${linkNode}"/>
-            <a href="<c:url value="${linkNode.url}" context="/"/>" alt="${title}">
+            <a href="<c:url value="${linkNode.url}" context="/"/>" alt="${fn:escapeXml(title)}">
                 <c:choose>
                     <c:when test="${jcr:isNodeType(currentNode, 'jdmix:buttonText')}">
                         <template:include view="hidden.buttonText"/>
