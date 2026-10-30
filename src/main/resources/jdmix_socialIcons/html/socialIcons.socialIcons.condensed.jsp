@@ -20,10 +20,10 @@
 
 
 <%-- if social icons were included, get the urls --%>
-    <c:set var="facebook" value="${currentNode.properties.facebook.string}"/>
-    <c:set var="linkedin" value="${currentNode.properties.linkedIn.string}"/>
-    <c:set var="twitter" value="${currentNode.properties.twitter.string}"/>
-    <c:set var="googlePlus" value="${currentNode.properties.googlePlus.string}"/>
+    <c:set var="facebook" value="${fn:trim(currentNode.properties.facebook.string)}"/>
+    <c:set var="linkedin" value="${fn:trim(currentNode.properties.linkedIn.string)}"/>
+    <c:set var="twitter" value="${fn:trim(currentNode.properties.twitter.string)}"/>
+    <c:set var="googlePlus" value="${fn:trim(currentNode.properties.googlePlus.string)}"/>
     <%-- a value with no http(s), ftp, mailto or tel scheme links as http:// --%>
     <c:set var="linkSchemes" value="(?i)(https?|ftp)://.*|(mailto|tel):.*"/>
 <!-- Contact Social Icons -->
