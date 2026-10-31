@@ -20,22 +20,24 @@
 
 
 <%-- if social icons were included, get the urls --%>
-    <c:set var="facebook" value="${currentNode.properties.facebook.string}"/>
-    <c:set var="linkedin" value="${currentNode.properties.linkedIn.string}"/>
-    <c:set var="twitter" value="${currentNode.properties.twitter.string}"/>
-    <c:set var="googlePlus" value="${currentNode.properties.googlePlus.string}"/>
+    <c:set var="facebook" value="${fn:trim(currentNode.properties.facebook.string)}"/>
+    <c:set var="linkedin" value="${fn:trim(currentNode.properties.linkedIn.string)}"/>
+    <c:set var="twitter" value="${fn:trim(currentNode.properties.twitter.string)}"/>
+    <c:set var="googlePlus" value="${fn:trim(currentNode.properties.googlePlus.string)}"/>
+    <%-- a value with no http(s), ftp, mailto or tel scheme links as http:// --%>
+    <c:set var="linkSchemes" value="(?i)(https?|ftp)://.*|(mailto|tel):.*"/>
 <!-- Contact Social Icons -->
 <ul class="list-inline who">
     <c:if test="${not empty facebook and facebook != 'http://'}">
-        <li><a href="${facebook}"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="${functions:matches(linkSchemes, facebook) ? '' : 'http://'}${fn:escapeXml(facebook)}"><i class="fa fa-facebook-official"></i></a></li>
     </c:if>
     <c:if test="${not empty twitter and twitter != 'http://'}">
-        <li><a href="${twitter}"><i class="fa fa-twitter-square"></i></a></li>
+        <li><a href="${functions:matches(linkSchemes, twitter) ? '' : 'http://'}${fn:escapeXml(twitter)}"><i class="fa fa-twitter-square"></i></a></li>
     </c:if>
     <c:if test="${not empty googlePlus and googlePlus != 'http://'}">
-        <li><a href="${googlePlus}"><i class="fa fa-google-plus-square"></i></a></li>
+        <li><a href="${functions:matches(linkSchemes, googlePlus) ? '' : 'http://'}${fn:escapeXml(googlePlus)}"><i class="fa fa-google-plus-square"></i></a></li>
     </c:if>
     <c:if test="${not empty linkedin and linkedin != 'http://'}">
-        <li><a href="${linkedin}"><i class="fa fa-linkedin-square"></i></a></li>
+        <li><a href="${functions:matches(linkSchemes, linkedin) ? '' : 'http://'}${fn:escapeXml(linkedin)}"><i class="fa fa-linkedin-square"></i></a></li>
     </c:if>
 </ul>
