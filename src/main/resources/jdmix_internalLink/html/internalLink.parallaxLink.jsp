@@ -26,4 +26,4 @@
 </c:if>
 <template:addCacheDependency node="${linkNode}"/>
 <a href="<c:url value="${linkNode.url}" context="/"/>" style="text-decoration: none;"
-   class="btn-u btn-brd btn-brd-hover btn-u-light">${linkTitle}</a>
+   class="btn-u btn-brd btn-brd-hover btn-u-light">${fn:escapeXml(linkTitle)}</a>
