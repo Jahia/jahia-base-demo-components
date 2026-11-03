@@ -22,17 +22,17 @@
 <galleryfigure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" >
 <c:choose>
     <c:when test="${renderContext.editMode}">
-        <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+        <img src="${imageUrl}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}" style="width: ${itemWidth}px"/>
         <br>
     </c:when>
     <c:otherwise>
         <a href="${imageUrl}" itemprop="contentUrl"
            data-size="${imageSize}">
-            <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+            <img src="${imageUrl}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}" style="width: ${itemWidth}px"/>
             <br>
         </a>
     </c:otherwise>
 </c:choose>
-<figcaption itemprop="caption description">${caption}</figcaption>
+<figcaption itemprop="caption description">${fn:escapeXml(caption)}</figcaption>
 </galleryfigure>
 

@@ -31,7 +31,7 @@
     <div id="eventTabs-content-${currentNode.identifier}" class="eventTabs" url="<c:url value='${url.base}${currentNode.path}.html'/>"
         uuid="${currentNode.identifier}" ${disableAjax}>
     <c:if test="${not empty title}">
-        <div class="headline"><h2>${title}</h2></div>
+        <div class="headline"><h2>${fn:escapeXml(title)}</h2></div>
     </c:if>
     <div class="tab-v1">
         <ul class="nav nav-tabs">

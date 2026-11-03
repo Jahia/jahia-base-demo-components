@@ -16,16 +16,16 @@
 <c:set var="caption" value="${currentNode.properties['jcr:title'].string}"/>
     <c:choose>
         <c:when test="${renderContext.editMode}">
-            <img src="${image.node.url}" itemprop="thumbnail" alt="${caption}"/>
+            <img src="${image.node.url}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}"/>
             <br>
         </c:when>
         <c:otherwise>
             <a href="${image.node.url}" itemprop="contentUrl"
                data-size="${image.node.properties['j:width'].string}x${image.node.properties['j:height'].string}">
-                <img src="${image.node.url}" itemprop="thumbnail" alt="${caption}"/>
+                <img src="${image.node.url}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}"/>
                 <br>
             </a>
         </c:otherwise>
     </c:choose>
-<figcaption itemprop="caption description">${caption}</figcaption>
+<figcaption itemprop="caption description">${fn:escapeXml(caption)}</figcaption>
 

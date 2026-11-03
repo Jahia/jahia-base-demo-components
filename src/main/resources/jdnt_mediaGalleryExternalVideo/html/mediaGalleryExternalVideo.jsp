@@ -35,19 +35,19 @@
 <c:choose>
     <c:when test="${renderContext.editMode}">
         <%-- if in edit mode, do not link to the photoswipe preview --%>
-        <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px"/>
+        <img src="${imageUrl}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}" style="width: ${itemWidth}px"/>
         <br>
     </c:when>
     <c:otherwise>
         <a href="#" itemprop="contentUrl"
            data-size="${imageSize}"
            data-type="video"
-           data-video='<div class="pswp_wrapper"><div class="pswp_video-wrapper"><iframe class="pswp__video" width="960" height="640" src="${videoURL}" frameborder="0" allowfullscreen></iframe></div></div>'
+           data-video='<div class="pswp_wrapper"><div class="pswp_video-wrapper"><iframe class="pswp__video" width="960" height="640" src="${fn:escapeXml(fn:escapeXml(videoURL))}" frameborder="0" allowfullscreen></iframe></div></div>'
         >
-            <img src="${imageUrl}" itemprop="thumbnail" alt="${caption}" style="width: ${itemWidth}px" class="img-responsive">
+            <img src="${imageUrl}" itemprop="thumbnail" alt="${fn:escapeXml(caption)}" style="width: ${itemWidth}px" class="img-responsive">
             <br/>
         </a>
-        <figcaption itemprop="caption description">${caption}</figcaption>
+        <figcaption itemprop="caption description">${fn:escapeXml(caption)}</figcaption>
     </c:otherwise>
 </c:choose>
 </galleryfigure>

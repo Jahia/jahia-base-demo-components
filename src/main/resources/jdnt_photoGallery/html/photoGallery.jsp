@@ -40,7 +40,7 @@ In the folder of skin CSS file there are also:
 <c:set var="images" value="${jcr:getChildrenOfType(currentNode, 'jdnt:galleryImg')}"/>
 
 <c:if test="${not empty title}">
-<h2>${title}</h2>
+<h2>${fn:escapeXml(title)}</h2>
 </c:if>
 
 <div class="myPhotoGallery" itemscope itemtype="http://schema.org/ImageGallery">
