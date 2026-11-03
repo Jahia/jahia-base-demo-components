@@ -24,7 +24,7 @@
     <c:set var="boxTitle" value="Speakers"/>
 </c:if>
 <ul class="list-inline">
-    <li><i class="fa   fa-users"></i>&nbsp;${boxTitle}:</li>
+    <li><i class="fa   fa-users"></i>&nbsp;${fn:escapeXml(boxTitle)}:</li>
     <template:area path="relatedPeople" nodeTypes="jnt:person">
         <template:param name="subNodesView" value="event"/>
     </template:area>
