@@ -21,7 +21,7 @@
 <jcr:nodeProperty node="${currentNode}" name="boxTitle" var="boxTitle"/>
 
 <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
-<div class="headline"><h2>${boxTitle.string}</h2></div>
+<div class="headline"><h2>${fn:escapeXml(boxTitle.string)}</h2></div>
 <ul class="list-unstyled margin-bottom-30">
     <template:area path="relatedPeople" nodeTypes="jnt:person">
         <template:param name="subNodesView" value="condensed"/>
