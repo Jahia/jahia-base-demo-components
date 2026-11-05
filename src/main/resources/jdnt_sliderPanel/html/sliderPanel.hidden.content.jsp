@@ -111,7 +111,7 @@
            data-duration="2000"
            data-delay="1300"
            data-ease="easeOutExpo"
-           alt="${title}"
+           alt="${fn:escapeXml(title)}"
         >${linkText}</a>
     </c:if>
 
