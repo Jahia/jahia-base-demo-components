@@ -26,24 +26,27 @@
 <jcr:nodeProperty node="${currentNode}" name="j:zipCode" var="zipCode"/>
 <jcr:nodeProperty node="${currentNode}" name="j:town" var="town"/>
 <jcr:nodeProperty node="${currentNode}" name="j:country" var="country"/>
+<c:set var="websiteUrl" value="${fn:trim(website.string)}"/>
+<%-- a value with no http(s), ftp, mailto or tel scheme links as http:// --%>
+<c:set var="linkSchemes" value="(?i)(https?|ftp)://.*|(mailto|tel):.*"/>
 
 <%-- display the headline title, get wording from resource files --%>
 <div class="headline"><h2><fmt:message key="jdnt_company.headlineTitle"/></h2></div>
 <ul class="list-unstyled who">
     <c:if test="${not empty street or not empty  town or not empty country}">
-    <li><a href="https://maps.google.com?q=${street.string}+${town.string}+${zipCode.string}+${country.string}"><i
-            class="fa fa-building-o"></i>${street.string}
-        <br/><i class="fa fa-building-o" style="visibility: hidden;"></i>${town.string}&nbsp;${zipCode.string}&nbsp;-&nbsp;${country.string}
+    <li><a href="https://maps.google.com?q=${fn:escapeXml(street.string)}+${fn:escapeXml(town.string)}+${fn:escapeXml(zipCode.string)}+${fn:escapeXml(country.string)}"><i
+            class="fa fa-building-o"></i>${fn:escapeXml(street.string)}
+        <br/><i class="fa fa-building-o" style="visibility: hidden;"></i>${fn:escapeXml(town.string)}&nbsp;${fn:escapeXml(zipCode.string)}&nbsp;-&nbsp;${fn:escapeXml(country.string)}
     </a>
         </c:if>
         <c:if test="${not empty email}">
-    <li><a href="mailto:${email.string}"><i class="fa fa-envelope"></i>${email.string}</a></li>
+    <li><a href="mailto:${fn:escapeXml(email.string)}"><i class="fa fa-envelope"></i>${fn:escapeXml(email.string)}</a></li>
     </c:if>
     <c:if test="${not empty phone}">
-        <li><a href="tel:${phone.string}"><i class="fa fa-phone"></i>${phone.string}</a></li>
+        <li><a href="tel:${fn:escapeXml(phone.string)}"><i class="fa fa-phone"></i>${fn:escapeXml(phone.string)}</a></li>
     </c:if>
-    <c:if test="${not empty website.string and website.string != 'http://'}">
-        <li><a href="${website.string}"><i class="fa fa-globe"></i>${website.string}</a></li>
+    <c:if test="${not empty websiteUrl and websiteUrl != 'http://'}">
+        <li><a href="${functions:matches(linkSchemes, websiteUrl) ? '' : 'http://'}${fn:escapeXml(websiteUrl)}"><i class="fa fa-globe"></i>${fn:escapeXml(websiteUrl)}</a></li>
     </c:if>
 </ul>
 
