@@ -21,5 +21,5 @@
 
 <li role="presentation" class="sliderSelect" tab="slidertab-${currentNode.identifier}"
     id="sliderselect-${currentNode.identifier}" href="#">
-    <a role="menuitem" class="sliderSelectItem" tabindex="-1" href="#" onclick="selectSliderPanel(this)">${currentNode.displayableName}</a>
+    <a role="menuitem" class="sliderSelectItem" tabindex="-1" href="#" onclick="selectSliderPanel(this)">${fn:escapeXml(currentNode.displayableName)}</a>
 </li>
