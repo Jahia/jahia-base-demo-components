@@ -20,15 +20,15 @@
 <c:set var="props" value="${currentNode.properties}"/>
 
 <div class="who">
-    <h3>${currentNode.properties['firstname'].string}&nbsp;${currentNode.properties['lastname'].string}</h3>
+    <h3>${fn:escapeXml(currentNode.properties['firstname'].string)}&nbsp;${fn:escapeXml(currentNode.properties['lastname'].string)}</h3>
     <ul class="list-unstyled">
         <c:if test="${not empty currentNode.properties['email'].string}">
             <li><a href="#"><i class="fa fa-envelope-o"></i><fmt:message
-                    key="jdnt_investorContactForm.email"/>: ${currentNode.properties['email'].string}</a></li>
+                    key="jdnt_investorContactForm.email"/>: ${fn:escapeXml(currentNode.properties['email'].string)}</a></li>
         </c:if>
         <c:if test="${not empty currentNode.properties['phone'].string}">
             <li><a href="#"><i class="fa fa-phone"></i><fmt:message
-                    key="jdnt_investorContactForm.phone"></fmt:message>: ${currentNode.properties['phone'].string}</a>
+                    key="jdnt_investorContactForm.phone"></fmt:message>: ${fn:escapeXml(currentNode.properties['phone'].string)}</a>
             </li>
         </c:if>
         <c:if test="${not empty props['investorType'].string}">
