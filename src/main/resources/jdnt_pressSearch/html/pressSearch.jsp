@@ -42,7 +42,7 @@
          url="<c:url value='${url.base}${currentNode.path}.html'/>"
          uuid="${currentNode.identifier}" ${disableAjax}>
         <c:if test="${not empty title}">
-            <div class="headline"><h2>${title}</h2></div>
+            <div class="headline"><h2>${fn:escapeXml(title)}</h2></div>
         </c:if>
         <%-- generate tabs --%>
         <div class="tab-v1">
